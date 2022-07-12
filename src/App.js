@@ -1,24 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { ThemeProvider } from "styled-components";
+import "./App.css";
+import "./styles.css";
+import StyledButton, {
+  FancyButton,
+  SubmitButton,
+} from "./components/Button/Button";
+import { AnimatedLogo, DarkButton } from "./components/Button/Button.styles";
 
+const theme = {
+  dark: {
+    primary: "#000",
+    text: "#fff",
+  },
+  light: {
+    primary: "#fff",
+    text: "#000",
+  },
+};
+// theme privides a theme to all components using contextAPI
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <div>
+          <AnimatedLogo src={logo} />
+        </div>
+        <div className="btnGrp" >
+          <StyledButton type="submit">StyledButton</StyledButton>
+
+          <StyledButton variant="outline">StyledButton</StyledButton>
+
+          <FancyButton as="a">Fancy button</FancyButton>
+
+          <SubmitButton>Submit</SubmitButton>
+
+          <DarkButton>Dark Button</DarkButton>
+        </div>
+      </div>
+    </ThemeProvider>
   );
 }
 

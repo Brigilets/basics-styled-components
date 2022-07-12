@@ -1,7 +1,19 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
+.btnGrp{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.btnGrp, .btnGrp > * {
+margin: 10px 0;
+min-width: 98px;
+} 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
