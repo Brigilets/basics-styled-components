@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import "./App.css";
 import "./styles.css";
 import StyledButton, {
@@ -17,11 +17,19 @@ const theme = {
     primary: "#fff",
     text: "#000",
   },
+  fontFamily: 'Segoe UI',
 };
+
+const GlobalStyle = createGlobalStyle`
+button {
+  font-family: ${(props) => props.theme.fontFamily};
+  font-weight: 600;
+}`
 // theme privides a theme to all components using contextAPI
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <div className="App">
         <div>
           <AnimatedLogo src={logo} />
